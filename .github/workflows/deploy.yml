@@ -36,5 +36,5 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.REMOTE_SSH_KEY }}
         script: |
-          cd ${{ variables.PATH }}
+          cd $PATH
           dotnet yourapp.dll
