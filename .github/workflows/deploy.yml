@@ -25,7 +25,8 @@ jobs:
       with:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.REMOTE_SSH_KEY }}
+        password: ${{ secrets.PASSWORD }}
+        port: 3000
         source: "out/*"
         target: "/path/to/your/server/directory"
 
