@@ -1,0 +1,40 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+      steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.0.0'  
+
+    - name: Publish .NET application
+      run: dotnet publish -c Release 
+
+    - name: Copy files via SSH
+      uses: appleboy/scp-action@v0.1.0
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.REMOTE_SSH_KEY }}
+        source: "out/*"
+        target: "/path/to/your/server/directory"
+
+    - name: Run commands on remote server
+      uses: appleboy/ssh-action@v0.1.0
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.REMOTE_SSH_KEY }}
+        script: |
+          cd ${{ variables.PATH }}
+          dotnet yourapp.dll
