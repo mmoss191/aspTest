@@ -29,7 +29,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.REMOTE_PORT }}
         source: "out/*"
-        target: "/path/to/your/server/directory"
+        target: "~/"
 
     - name: Run commands on remote server
       uses: appleboy/ssh-action@v0.1.0
