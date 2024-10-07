@@ -8,17 +8,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-      steps:
+    steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Set up .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '8.0.0'  
+        dotnet-version: '8.0.*'  
 
     - name: Publish .NET application
-      run: dotnet publish -c Release 
+      run: dotnet publish
 
     - name: Copy files via SSH
       uses: appleboy/scp-action@v0.1.0
@@ -32,9 +32,10 @@ jobs:
     - name: Run commands on remote server
       uses: appleboy/ssh-action@v0.1.0
       with:
+        port: 3000
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.REMOTE_SSH_KEY }}
         script: |
-          cd ${{ variables.PATH }}
+          cd $PATH
           dotnet yourapp.dll
