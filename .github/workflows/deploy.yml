@@ -18,7 +18,7 @@ jobs:
         dotnet-version: '8.0.0'  
 
     - name: Publish .NET application
-      run: dotnet publish -c Release 
+      run: dotnet publish
 
     - name: Copy files via SSH
       uses: appleboy/scp-action@v0.1.0
