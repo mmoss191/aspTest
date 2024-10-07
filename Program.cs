@@ -1,5 +1,5 @@
 using testAsp.Components;
-//test
+//test2
 namespace testAsp
 {
     public class Program
