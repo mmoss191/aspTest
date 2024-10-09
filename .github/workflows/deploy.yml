@@ -39,5 +39,6 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         password: ${{ secrets.PASSWORD }}
         script: |
-          cd /var/www/test/
-          dotnet testAsp.dll
+            sudo systemctl daemon-reload
+            sudo systemctl start myapp
+            sudo systemctl enable myapp
