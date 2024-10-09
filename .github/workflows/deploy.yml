@@ -39,5 +39,5 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         password: ${{ secrets.PASSWORD }}
         script: |
-          cd $PATH
+          cd /var/www/test/
           dotnet yourapp.dll
