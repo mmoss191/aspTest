@@ -39,6 +39,4 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         password: ${{ secrets.PASSWORD }}
         script: |
-            sudo systemctl daemon-reload
             sudo systemctl start myapp
-            sudo systemctl enable myapp
