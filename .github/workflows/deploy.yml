@@ -49,4 +49,4 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         password: ${{ secrets.PASSWORD }}
         script: |
-            sudo systemctl start aspTest
+            sudo systemctl restart aspTest
