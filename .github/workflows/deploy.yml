@@ -28,7 +28,7 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.REMOTE_PORT }}
-        source: "./"
+        source: "./out"
         target: "~/aspTest/"
 
     - name: Run commands on remote server
