@@ -19,7 +19,7 @@ jobs:
         dotnet-version: '8.0.*'  
 
     - name: Publish .NET application
-      run: dotnet publish
+      run: dotnet publish -o "./out"
 
     - name: Copy files via SSH
       uses: appleboy/scp-action@master
@@ -28,7 +28,7 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.REMOTE_PORT }}
-        source: "./*"
+        source: "./out/*"
         target: "~/$PATH"
 
     - name: Run commands on remote server
